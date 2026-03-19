@@ -1,7 +1,9 @@
 fastapi
-uvicorn
+uvicorn[standard]
 python-dotenv
 motor
 python-jose
 passlib
 bcrypt==4.0.1
+pydantic-settings
+websockets
