@@ -8,8 +8,18 @@ export interface ChatMessage {
     timestamp: string
 }
 
-const API=axios.create({
-    baseURL:"http://localhost:8000"
+const buildApiBaseUrl = () => {
+    const envBase = import.meta.env.VITE_API_BASE_URL as string | undefined
+    if (envBase && envBase.length > 0) {
+        return envBase.replace(/\/$/, "")
+    }
+
+    const host = window.location.hostname
+    return `${window.location.protocol}//${host}:8000`
+}
+
+const API = axios.create({
+    baseURL: buildApiBaseUrl()
 })
 
 export const login= async(username: string, password: string)=>{
