@@ -1,7 +1,7 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 import json
-
+from app.core.redis import redis_client
 from app.core.jwt_handler import verify_token
 from app.services.message_services import save_message
 from app.routes.user_routes import router as user_router
@@ -71,3 +71,10 @@ async def websocket_endpoint(websocket: WebSocket):
 
     except WebSocketDisconnect:
         manager.disconnect(username)
+
+
+@app.on_event("startup")
+def test_redis():
+    redis_client.set("test_key", "hello_redis")
+    value = redis_client.get("test_key")
+    print("Redis test:", value)
