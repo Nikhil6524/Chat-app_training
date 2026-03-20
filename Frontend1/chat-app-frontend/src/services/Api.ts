@@ -15,7 +15,7 @@ const buildApiBaseUrl = () => {
     }
 
     const host = window.location.hostname
-    return `${window.location.protocol}//${host}:8000`
+    return `${window.location.protocol}//${host}:8001`
 } // this function builds the base url for API calls based on environment variable or current window location. majorly used while containiering frontend and connecting it to backend
 const API = axios.create({
     baseURL: buildApiBaseUrl()

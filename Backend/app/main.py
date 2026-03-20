@@ -17,25 +17,25 @@ app = FastAPI()
 app.include_router(message_router)
 app.include_router(auth_router)
 app.include_router(user_router)
-
+#different route files for different functionalities like user management, authentication and message handling are included in the main application for better organization
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-)
+)# CORS middleware allowing all origins for development purposes
 
 
 @app.get("/")
 async def root():
-    return {"status": "Chat backend running"}
+    return {"status": "Chat backend running"}#check for backend running
 
 
-@app.websocket("/ws")
+@app.websocket("/ws")#websocket endpoint for real-time communication between clients and server
 async def websocket_endpoint(websocket: WebSocket):
 
-    token = websocket.query_params.get("token")
+    token = websocket.query_params.get("token")# get the authentication token from query parameters of the websocket connection 
 
     if not token:
         await websocket.close(code=1008)
@@ -51,9 +51,9 @@ async def websocket_endpoint(websocket: WebSocket):
         await websocket.close(code=1008)
         return
 
-    username = payload["username"]
+    username = payload["username"] 
 
-    await manager.connect(username, websocket)
+    await manager.connect(username, websocket)# 
 
     try:
         while True:

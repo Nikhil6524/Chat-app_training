@@ -1,3 +1,4 @@
+# This file contains the data model for messages in the chat application. 
 from datetime import datetime
 
 

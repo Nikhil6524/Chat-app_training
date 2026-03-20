@@ -1,3 +1,4 @@
+# db connection to mongo using `motor` async driver and defining the collection for messages
 from motor.motor_asyncio import AsyncIOMotorClient
 from app.core.config import settings
 

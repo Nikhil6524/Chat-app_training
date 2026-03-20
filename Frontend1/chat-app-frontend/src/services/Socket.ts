@@ -6,7 +6,7 @@ const buildSocketUrl = (token: string) => {
 
   const protocol = window.location.protocol === "https:" ? "wss" : "ws"
   const host = window.location.hostname
-  return `${protocol}://${host}:8000/ws?token=${token}`
+  return `${protocol}://${host}:8001/ws?token=${token}`
 }// this function builds the websocket url based on environment variable or current window location and appends the authentication token 
 
 export const createSocket = (token: string) => {

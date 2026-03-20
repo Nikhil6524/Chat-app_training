@@ -25,7 +25,7 @@ def start_redis_listener():
                 manager.send_personal_message(receiver, payload)
             )
 
-            # Send to sender (echo back)
+            # Send to sender
             manager.loop.create_task(
                 manager.send_personal_message(sender, payload)
             )

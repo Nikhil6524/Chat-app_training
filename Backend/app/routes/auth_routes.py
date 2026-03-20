@@ -1,3 +1,4 @@
+#routes for user authentication
 from fastapi import APIRouter
 from app.schema.user_schema import UserLogin,UserRegister
 from app.services.auth_services import user_register,user_login

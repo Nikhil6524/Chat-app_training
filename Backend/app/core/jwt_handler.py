@@ -1,3 +1,4 @@
+# This file contains functions to create and verify JWT tokens for user authentication. 
 from jose import jwt
 from datetime import datetime, timedelta, timezone
 

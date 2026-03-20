@@ -24,3 +24,16 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
+  frontend2:
+    build: ./Frontend1
+    container_name: frontend2
+    ports:
+      - "3001:3000"
+    depends_on:
+      - backend
+  backend2:
+    build:
+      context: ./Backend
+    container_name: backend2
+    ports:
+      - "8001:8000"
